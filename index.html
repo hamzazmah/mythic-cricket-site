@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gully Gang Cricket</title>
+<meta name="description" content="Swipe-to-play 3D arcade cricket with 33 animal cricketers, chaotic stadiums, supers and online ranked play. Free on phones, premium on PC.">
+<meta property="og:title" content="Gully Gang Cricket">
+<meta property="og:description" content="Swipe. Smash. Six. Arcade cricket with animals, chaos and supers.">
+<meta property="og:image" content="img/night_gully_match.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1d1440">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23e53935'/%3E%3Cpath d='M14 22c10 6 26 6 36 0M14 42c10-6 26-6 36 0' stroke='%23fff' stroke-width='3' fill='none' stroke-dasharray='3 3'/%3E%3C/svg%3E">
+<style>
+:root {
+	--bg: #fff8ec;
+	--ink: #1d1440;
+	--soft: #5b5277;
+	--card: #ffffff;
+	--line: #eadfcb;
+	--accent: #ffcf1f;
+	--hot: #ff4f4f;
+	--grass: #23b45a;
+	--violet: #8a6cff;
+	--shadow: 0 6px 0 rgba(29, 20, 64, 0.16);
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--bg: #140e2c;
+		--ink: #fff8ec;
+		--soft: #c3bbdd;
+		--card: #221a47;
+		--line: #3a3070;
+		--shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+	}
+}
+:root[data-theme="dark"] {
+	--bg: #140e2c;
+	--ink: #fff8ec;
+	--soft: #c3bbdd;
+	--card: #221a47;
+	--line: #3a3070;
+	--shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.display {
+	font-family: "Arial Black", "Helvetica Neue", system-ui, sans-serif;
+	font-weight: 900;
+	letter-spacing: -0.02em;
+	line-height: 1.02;
+	text-transform: uppercase;
+}
+header.hero {
+	position: relative;
+	color: #fff8ec;
+	background: #1d1440 url("img/night_gully_match.jpg") center / cover no-repeat;
+	min-height: 86vh;
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+}
+header.hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(20, 14, 44, 0.15) 0%, rgba(20, 14, 44, 0.55) 45%, rgba(20, 14, 44, 0.96) 100%);
+}
+.hero .wrap { position: relative; padding-bottom: 56px; padding-top: 120px; }
+.tag {
+	display: inline-block;
+	background: var(--accent);
+	color: #1d1440;
+	font-weight: 800;
+	font-size: 13px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 6px 12px;
+	border-radius: 999px;
+	transform: rotate(-2deg);
+}
+.hero h1 { font-size: clamp(44px, 9vw, 104px); margin: 18px 0 14px; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { font-size: clamp(18px, 2.2vw, 22px); max-width: 620px; margin: 0 0 28px; color: #e9e3ff; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 22px;
+	border-radius: 14px;
+	font-weight: 800;
+	text-decoration: none;
+	border: 3px solid #1d1440;
+	box-shadow: 0 5px 0 #1d1440;
+	transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn:hover { transform: translateY(2px); box-shadow: 0 3px 0 #1d1440; }
+.btn.primary { background: var(--accent); color: #1d1440; }
+.btn.ghost { background: #fff8ec; color: #1d1440; }
+.btn small { font-weight: 600; opacity: 0.7; }
+nav.top {
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	z-index: 2;
+}
+nav.top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; }
+nav.top .brand { font-size: 18px; color: #fff8ec; text-decoration: none; }
+nav.top .links { display: flex; gap: 18px; font-weight: 700; font-size: 15px; }
+nav.top .links a { color: #fff8ec; text-decoration: none; opacity: 0.85; }
+nav.top .links a:hover { opacity: 1; }
+section { padding: 84px 0; }
+h2 { font-size: clamp(32px, 5vw, 54px); margin: 0 0 14px; }
+.sub { color: var(--soft); max-width: 640px; margin: 0 0 40px; font-size: 19px; }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card {
+	background: var(--card);
+	border: 3px solid var(--line);
+	border-radius: 20px;
+	padding: 24px;
+	box-shadow: var(--shadow);
+}
+.card .icon {
+	width: 52px; height: 52px;
+	border-radius: 14px;
+	display: grid; place-items: center;
+	font-size: 26px;
+	margin-bottom: 14px;
+}
+.card h3 { margin: 0 0 6px; font-size: 21px; }
+.card p { margin: 0; color: var(--soft); }
+.i1 { background: #ffe9a8; } .i2 { background: #ffd0d0; } .i3 { background: #c9f2d6; }
+.i4 { background: #e0d8ff; } .i5 { background: #cdeefe; } .i6 { background: #ffe0c2; }
+.strip { background: var(--ink); color: var(--bg); padding: 22px 0; overflow: hidden; }
+.strip .row { display: flex; gap: 40px; white-space: nowrap; animation: slide 32s linear infinite; font-size: 26px; }
+.strip .row span::after { content: "\2605"; margin-left: 40px; color: var(--accent); }
+@keyframes slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .strip .row { animation: none; } }
+.shots { display: grid; gap: 16px; grid-template-columns: 2fr 1fr; }
+.shots figure { margin: 0; border-radius: 18px; overflow: hidden; border: 3px solid var(--line); box-shadow: var(--shadow); background: #1d1440; }
+.shots figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 9; }
+.shots .tall { grid-row: span 2; }
+.shots .tall img { aspect-ratio: auto; }
+.shots figcaption { color: #fff8ec; font-weight: 700; font-size: 14px; padding: 10px 14px; }
+.editions { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.edition { border-radius: 24px; padding: 30px; border: 3px solid #1d1440; box-shadow: 0 6px 0 #1d1440; color: #1d1440; }
+.edition.mobile { background: #c9f2d6; }
+.edition.pc { background: #e0d8ff; }
+.edition h3 { font-size: 30px; margin: 0 0 4px; }
+.edition .price { font-weight: 800; font-size: 18px; margin-bottom: 18px; }
+.edition ul { margin: 0; padding-left: 20px; }
+.edition li { margin: 6px 0; }
+.fair {
+	margin-top: 26px;
+	border-radius: 18px;
+	padding: 18px 22px;
+	background: var(--card);
+	border: 3px dashed var(--line);
+	color: var(--soft);
+}
+.fair strong { color: var(--ink); }
+.cta-band { text-align: center; background: var(--grass); color: #fff8ec; }
+.cta-band h2 { color: #fff8ec; }
+.cta-band .ctas { justify-content: center; }
+footer { padding: 40px 0 60px; color: var(--soft); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+@media (max-width: 720px) {
+	nav.top .links { display: none; }
+	.shots { grid-template-columns: 1fr; }
+	.shots .tall { grid-row: auto; }
+	section { padding: 60px 0; }
+}
+</style>
+</head>
+<body>
+<nav class="top">
+	<div class="wrap">
+		<a class="brand display" href="#">Gully Gang</a>
+		<div class="links">
+			<a href="#features">Features</a>
+			<a href="#grounds">Grounds</a>
+			<a href="#editions">Editions</a>
+		</div>
+	</div>
+</nav>
+
+<header class="hero">
+	<div class="wrap">
+		<span class="tag">Arcade cricket &middot; 16+</span>
+		<h1 class="display">Swipe. Smash.<br><span>Six.</span></h1>
+		<p class="lead">Thirty-three loud animal cricketers, eleven chaotic grounds and one swipe to hit the ball out of the stadium. Every nation gets roasted. Equally.</p>
+		<div class="ctas">
+			<a class="btn primary" href="#editions">Get the game <small>soon</small></a>
+			<a class="btn ghost" href="#features">See what is inside</a>
+		</div>
+	</div>
+</header>
+
+<div class="strip" aria-hidden="true">
+	<div class="row display">
+		<span>Supers</span><span>Super Clash</span><span>Trick shots</span><span>Boss grounds</span><span>Online ranked</span><span>Pass and play</span><span>Real ball physics</span><span>Dancing umpires</span>
+		<span>Supers</span><span>Super Clash</span><span>Trick shots</span><span>Boss grounds</span><span>Online ranked</span><span>Pass and play</span><span>Real ball physics</span><span>Dancing umpires</span>
+	</div>
+</div>
+
+<section id="features">
+	<div class="wrap">
+		<h2 class="display">Cricket, but loud</h2>
+		<p class="sub">Short matches, big hits and a commentator who will not stop talking. You learn it in one ball and you play it for a year.</p>
+		<div class="grid">
+			<div class="card"><div class="icon i1">&#x1F3CF;</div><h3>Swipe to bat</h3><p>Flick for a drive, swipe up to loft, time it off the middle of the bat. Edges fly behind, like the real thing.</p></div>
+			<div class="card"><div class="icon i2">&#x1F4A5;</div><h3>Supers and clashes</h3><p>Every cricketer has a unique super. Fire one at the same time as your rival and you mash the screen to win it.</p></div>
+			<div class="card"><div class="icon i3">&#x1F30D;</div><h3>World Tour</h3><p>Eleven chapters, each with a boss ground: kites that cut the ball, sheep that block it, rain that stops play.</p></div>
+			<div class="card"><div class="icon i4">&#x1F3C6;</div><h3>Online ranked</h3><p>Fair matches with normalised stats. Nothing you buy changes a ranked result. Or play friends with a room code.</p></div>
+			<div class="card"><div class="icon i5">&#x1F3AE;</div><h3>Pass and play</h3><p>One phone, two players, no internet. Bowl a ball, hand it over, watch them miss.</p></div>
+			<div class="card"><div class="icon i6">&#x1F3A9;</div><h3>Kits and swag</h3><p>Pirate hats, wizard hats, DJ headphones. Looks only, so dress up without guilt.</p></div>
+		</div>
+	</div>
+</section>
+
+<section id="grounds" style="padding-top: 0">
+	<div class="wrap">
+		<h2 class="display">Grounds with attitude</h2>
+		<p class="sub">Thirteen stadiums with crowds that jump on a six and slump on a wicket, plus fireworks, flocks and the odd invasion.</p>
+		<div class="shots">
+			<figure class="tall"><img src="img/night_gully_o.jpg" alt="A night stadium packed with a bright crowd, seen from above" loading="lazy"><figcaption>Night Gully</figcaption></figure>
+			<figure><img src="img/unicorn_arena_o.jpg" alt="A neon purple arena with a teal pitch" loading="lazy"><figcaption>Unicorn Arena</figcaption></figure>
+			<figure><img src="img/beach_oval_o.jpg" alt="A seaside oval next to bright blue water" loading="lazy"><figcaption>Beach-Side Oval</figcaption></figure>
+		</div>
+	</div>
+</section>
+
+<section id="editions" style="padding-top: 0">
+	<div class="wrap">
+		<h2 class="display">Two ways to play</h2>
+		<p class="sub">Same game, same online servers, same characters to unlock.</p>
+		<div class="editions">
+			<div class="edition mobile">
+				<h3 class="display">Phone and tablet</h3>
+				<div class="price">Free on Android, iPhone and iPad later</div>
+				<ul>
+					<li>The full match game, free to play</li>
+					<li>Optional ads for bonus coins, never in the middle of a match</li>
+					<li>One Full Game purchase opens every nation and every cricketer</li>
+					<li>No Ads purchase available</li>
+				</ul>
+			</div>
+			<div class="edition pc">
+				<h3 class="display">PC</h3>
+				<div class="price">Premium on Windows, macOS and Linux</div>
+				<ul>
+					<li>Pay once, no ads, no in-game purchases</li>
+					<li>Season pass premium track included</li>
+					<li>Keyboard controls built in</li>
+					<li>Store achievements</li>
+				</ul>
+			</div>
+		</div>
+		<div class="fair"><strong>Not pay to win.</strong> Money buys looks and saves time. Ranked play normalises every squad, so a free player and a paying player meet on equal terms.</div>
+	</div>
+</section>
+
+<section class="cta-band">
+	<div class="wrap">
+		<h2 class="display">Coming soon</h2>
+		<p>Store pages open closer to launch. Playtests come first.</p>
+	</div>
+</section>
+
+<footer>
+	<div class="wrap">
+		<div>&copy; 2026 Gully Gang Cricket</div>
+		<div>All characters are fictional animals. Not affiliated with any cricket board, league or team.</div>
+	</div>
+</footer>
+</body>
+</html>
