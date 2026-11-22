@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gully Gang Cricket</title>
-<meta name="description" content="Swipe-to-play 3D arcade cricket with 33 animal cricketers, chaotic stadiums, supers and online ranked play. Free on phones, premium on PC.">
-<meta property="og:title" content="Gully Gang Cricket">
+<title>Mythic Cricket</title>
+<meta name="description" content="Swipe-to-play 3D arcade cricket with 34 animal cricketers, chaotic stadiums, supers and online ranked play. Free on phones, premium on PC.">
+<meta property="og:title" content="Mythic Cricket">
 <meta property="og:description" content="Swipe. Smash. Six. Arcade cricket with animals, chaos and supers.">
-<meta property="og:image" content="img/night_gully_match.jpg">
+<meta property="og:image" content="img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1d1440">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23e53935'/%3E%3Cpath d='M14 22c10 6 26 6 36 0M14 42c10-6 26-6 36 0' stroke='%23fff' stroke-width='3' fill='none' stroke-dasharray='3 3'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
 :root {
 	--bg: #fff8ec;
@@ -173,6 +174,16 @@ h2 { font-size: clamp(32px, 5vw, 54px); margin: 0 0 14px; }
 .cta-band .ctas { justify-content: center; }
 footer { padding: 40px 0 60px; color: var(--soft); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+.video { margin: 0; border-radius: 22px; overflow: hidden; border: 3px solid #1d1440; box-shadow: 0 6px 0 #1d1440; background: #0d0626; }
+.video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0d0626; }
+.videos { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 18px; }
+.videos figcaption, .video figcaption { color: #fff8ec; font-weight: 700; font-size: 14px; padding: 10px 14px; }
+.gallery { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.gallery a { display: block; border-radius: 16px; overflow: hidden; border: 3px solid var(--line); box-shadow: var(--shadow); background: #1d1440; }
+.gallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.2s; }
+.gallery a:hover img { transform: scale(1.04); }
+.gallery span { display: block; color: #fff8ec; font-weight: 700; font-size: 14px; padding: 8px 12px; }
+.brand img { width: 30px; height: 30px; border-radius: 8px; vertical-align: middle; margin-right: 8px; }
 @media (max-width: 720px) {
 	nav.top .links { display: none; }
 	.shots { grid-template-columns: 1fr; }
@@ -184,9 +195,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: 
 <body>
 <nav class="top">
 	<div class="wrap">
-		<a class="brand display" href="#">Gully Gang</a>
+		<a class="brand display" href="#"><img src="img/favicon.png" alt="">Mythic Cricket</a>
 		<div class="links">
+			<a href="#trailer">Trailer</a>
 			<a href="#features">Features</a>
+			<a href="#screens">Screens</a>
 			<a href="#grounds">Grounds</a>
 			<a href="#editions">Editions</a>
 		</div>
@@ -197,10 +210,10 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: 
 	<div class="wrap">
 		<span class="tag">Arcade cricket &middot; 16+</span>
 		<h1 class="display">Swipe. Smash.<br><span>Six.</span></h1>
-		<p class="lead">Thirty-three loud animal cricketers, eleven chaotic grounds and one swipe to hit the ball out of the stadium. Every nation gets roasted. Equally.</p>
+		<p class="lead">Thirty-four loud animal cricketers, eleven chaotic grounds and one swipe to hit the ball out of the stadium. Every nation gets roasted. Equally.</p>
 		<div class="ctas">
 			<a class="btn primary" href="#editions">Get the game <small>soon</small></a>
-			<a class="btn ghost" href="#features">See what is inside</a>
+			<a class="btn ghost" href="#trailer">Watch the trailer</a>
 		</div>
 	</div>
 </header>
@@ -211,6 +224,18 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: 
 		<span>Supers</span><span>Super Clash</span><span>Trick shots</span><span>Boss grounds</span><span>Online ranked</span><span>Pass and play</span><span>Real ball physics</span><span>Dancing umpires</span>
 	</div>
 </div>
+
+<section id="trailer">
+	<div class="wrap">
+		<h2 class="display">Watch it move</h2>
+		<p class="sub">The trailer, then real matches captured straight from the game.</p>
+		<figure class="video"><video controls preload="none" playsinline poster="media/trailer.jpg"><source src="media/trailer.mp4" type="video/mp4"></video></figure>
+		<div class="videos">
+			<figure class="video"><video controls preload="none" playsinline muted poster="media/gameplay.jpg"><source src="media/gameplay.mp4" type="video/mp4"></video><figcaption>Gameplay: intro, toss and the first over at Night Gully</figcaption></figure>
+			<figure class="video"><video controls preload="none" playsinline muted poster="media/beach.jpg"><source src="media/beach.mp4" type="video/mp4"></video><figcaption>Gameplay: batting camera at the Caribbean beach</figcaption></figure>
+		</div>
+	</div>
+</section>
 
 <section id="features">
 	<div class="wrap">
@@ -227,14 +252,32 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: 
 	</div>
 </section>
 
+<section id="screens" style="padding-top: 0">
+	<div class="wrap">
+		<h2 class="display">Screenshots</h2>
+		<p class="sub">Captured from the current build.</p>
+		<div class="gallery">
+			<a href="img/shots/menu.jpg"><img src="img/shots/menu.jpg" alt="Main menu screen" loading="lazy"><span>Main menu</span></a>
+			<a href="img/shots/squad.jpg"><img src="img/shots/squad.jpg" alt="Pick your squad screen" loading="lazy"><span>Pick your squad</span></a>
+			<a href="img/shots/intro.jpg"><img src="img/shots/intro.jpg" alt="Match intro screen" loading="lazy"><span>Match intro</span></a>
+			<a href="img/shots/toss.jpg"><img src="img/shots/toss.jpg" alt="The toss screen" loading="lazy"><span>The toss</span></a>
+			<a href="img/shots/back_view.jpg"><img src="img/shots/back_view.jpg" alt="Batting camera screen" loading="lazy"><span>Batting camera</span></a>
+			<a href="img/shots/match_12.jpg"><img src="img/shots/match_12.jpg" alt="Live match screen" loading="lazy"><span>Live match</span></a>
+			<a href="img/shots/gallery.jpg"><img src="img/shots/gallery.jpg" alt="Character gallery screen" loading="lazy"><span>Character gallery</span></a>
+			<a href="img/shots/store.jpg"><img src="img/shots/store.jpg" alt="Kits and swag screen" loading="lazy"><span>Kits and swag</span></a>
+			<a href="img/shots/campaign.jpg"><img src="img/shots/campaign.jpg" alt="World Tour screen" loading="lazy"><span>World Tour</span></a>
+		</div>
+	</div>
+</section>
+
 <section id="grounds" style="padding-top: 0">
 	<div class="wrap">
 		<h2 class="display">Grounds with attitude</h2>
 		<p class="sub">Thirteen stadiums with crowds that jump on a six and slump on a wicket, plus fireworks, flocks and the odd invasion.</p>
 		<div class="shots">
-			<figure class="tall"><img src="img/night_gully_o.jpg" alt="A night stadium packed with a bright crowd, seen from above" loading="lazy"><figcaption>Night Gully</figcaption></figure>
-			<figure><img src="img/unicorn_arena_o.jpg" alt="A neon purple arena with a teal pitch" loading="lazy"><figcaption>Unicorn Arena</figcaption></figure>
-			<figure><img src="img/beach_oval_o.jpg" alt="A seaside oval next to bright blue water" loading="lazy"><figcaption>Beach-Side Oval</figcaption></figure>
+			<figure class="tall"><img src="img/shots/unicorn_arena.jpg" alt="A neon arena with a rainbow crowd" loading="lazy"><figcaption>Unicorn Arena</figcaption></figure>
+			<figure><img src="img/shots/dhaka_monsoon.jpg" alt="A rainy stadium under monsoon clouds" loading="lazy"><figcaption>Dhaka Monsoon</figcaption></figure>
+			<figure><img src="img/shots/township_braai.jpg" alt="A township ground with braai grills" loading="lazy"><figcaption>Township Braai Field</figcaption></figure>
 		</div>
 	</div>
 </section>
@@ -278,7 +321,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: 
 
 <footer>
 	<div class="wrap">
-		<div>&copy; 2026 Gully Gang Cricket</div>
+		<div>&copy; 2026 Mythic Cricket</div>
 		<div>All characters are fictional animals. Not affiliated with any cricket board, league or team.</div>
 	</div>
 </footer>
